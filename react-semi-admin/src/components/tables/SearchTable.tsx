@@ -2,8 +2,9 @@
  * Created by hao.cheng on 2017/4/16.
  */
 import React from 'react';
-import { Table, Input, Button } from 'antd';
+import { Table, Input, Button } from '@douyinfe/semi-ui';
 import { SmileOutlined } from '@ant-design/icons';
+import { ColumnProps } from '@douyinfe/semi-ui/lib/es/table';
 
 const data = [
     {
@@ -74,7 +75,7 @@ class SearchTable extends React.Component {
         });
     };
     render() {
-        const columns = [
+        const columns: ColumnProps[] = [
             {
                 title: 'Name',
                 dataIndex: 'name',
@@ -86,7 +87,7 @@ class SearchTable extends React.Component {
                             placeholder="Search name"
                             value={this.state.searchText}
                             onChange={this.onInputChange}
-                            onPressEnter={this.onSearch}
+                            onEnterPress={this.onSearch}
                         />
                         <Button type="primary" onClick={this.onSearch}>
                             Search
@@ -97,7 +98,7 @@ class SearchTable extends React.Component {
                     <SmileOutlined style={{ color: this.state.filtered ? '#108ee9' : '#aaa' }} />
                 ),
                 filterDropdownVisible: this.state.filterDropdownVisible,
-                onFilterDropdownVisibleChange: (visible: boolean) =>
+                onFilterDropdownVisibleChange: (visible?: boolean) =>
                     this.setState({ filterDropdownVisible: visible }, () =>
                         this.searchInput.focus()
                     ),

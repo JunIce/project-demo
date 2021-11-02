@@ -1,9 +1,5 @@
-/**
- * Created by hao.cheng on 2017/4/15.
- */
 import React from 'react';
-import { Table } from 'antd';
-// import { TableRowSelection } from 'antd/lib/table';
+import { Table } from '@douyinfe/semi-ui';
 
 const columns = [
     {

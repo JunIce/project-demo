@@ -1,8 +1,5 @@
-/**
- * Created by hao.cheng on 2017/4/16.
- */
 import React from 'react';
-import { Table, Button } from 'antd';
+import { Table, Button } from '@douyinfe/semi-ui';
 
 const columns = [
     { title: 'Name', dataIndex: 'name', key: 'name' },
@@ -20,7 +17,7 @@ const data = [
 const ExpandedTable = () => (
     <Table
         columns={columns}
-        expandedRowRender={record => <p>{record.description}</p>}
+        expandedRowRender={(record: any) => <p>{record.description}</p>}
         dataSource={data}
     />
 );

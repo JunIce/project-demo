@@ -2,7 +2,7 @@
  * Created by hao.cheng on 2017/4/15.
  */
 import React from 'react';
-import { Table, Button } from 'antd';
+import { Table, Button } from '@douyinfe/semi-ui';
 import { DownOutlined } from '@ant-design/icons';
 
 const columns = [

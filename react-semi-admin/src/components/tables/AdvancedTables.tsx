@@ -2,7 +2,7 @@
  * Created by hao.cheng on 2017/4/16.
  */
 import React from 'react';
-import { Row, Col, Card } from 'antd';
+import { Row, Col, Card } from '@douyinfe/semi-ui';
 import FixedTable from './FixedTable';
 import ExpandedTable from './ExpandedTable';
 import BreadcrumbCustom from '../widget/BreadcrumbCustom';

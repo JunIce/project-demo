@@ -1,9 +1,6 @@
-/**
- * Created by hao.cheng on 2017/4/16.
- */
 import React from 'react';
-import { Table } from 'antd';
-import { ColumnProps } from 'antd/lib/table';
+import { Table } from '@douyinfe/semi-ui';
+import { ColumnProps } from '@douyinfe/semi-ui/lib/es/table';
 
 const columns: ColumnProps<any>[] = [
     { title: 'Full Name', width: 100, dataIndex: 'name', key: 'name', fixed: 'left' },

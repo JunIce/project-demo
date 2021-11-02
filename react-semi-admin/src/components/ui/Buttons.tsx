@@ -4,7 +4,7 @@
 import React from 'react';
 import { Row, Col, Card, Button, Radio, Nav, Dropdown, RadioGroup, ButtonGroup, DropdownMenu } from '@douyinfe/semi-ui';
 import BreadcrumbCustom from '../widget/BreadcrumbCustom';
-import { DownOutlined, LeftOutlined, RightOutlined } from '@ant-design/icons';
+import { IconArrowDown, IconLeftCircleStroked, IconTopRightStroked, } from '@douyinfe/semi-icons';
 import { Size } from '@douyinfe/semi-ui/lib/es/button';
 
 type ButtonsState = {
@@ -88,12 +88,12 @@ class Buttons extends React.Component<any, ButtonsState> {
                                 <br />
                                 <ButtonGroup size={size}>
                                     <Button type="primary">
-                                        <LeftOutlined />
+                                        <IconLeftCircleStroked />
                                         Backward
                                     </Button>
                                     <Button type="primary">
                                         Forward
-                                        <RightOutlined />
+                                        <IconTopRightStroked />
                                     </Button>
                                 </ButtonGroup>
                             </Card>
@@ -119,7 +119,7 @@ class Buttons extends React.Component<any, ButtonsState> {
                                     </Dropdown.Menu>
                                 }>
                                     <Button>
-                                        more <DownOutlined />
+                                        more <IconArrowDown />
                                     </Button>
                                 </Dropdown>
                             </Card>

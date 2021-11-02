@@ -2,7 +2,7 @@
  * Created by hao.cheng on 2017/4/15.
  */
 import React from 'react';
-import { Table, Button } from 'antd';
+import { Table, Button } from '@douyinfe/semi-ui';
 
 const data = [
     {
@@ -43,7 +43,7 @@ class SortTable extends React.Component<any, SortTableState> {
             sortedInfo: {},
         };
     }
-    handleChange = (pagination: any, filters: any, sorter: any) => {
+    handleChange = ({ pagination, filters, sorter }: any) => {
         console.log('Various parameters', pagination, filters, sorter);
         this.setState({
             filteredInfo: filters,
@@ -75,7 +75,7 @@ class SortTable extends React.Component<any, SortTableState> {
                 dataIndex: 'name',
                 key: 'name',
                 filters: [{ text: 'Joe', value: 'Joe' }, { text: 'Jim', value: 'Jim' }],
-                filteredValue: filteredInfo.name || null,
+                filteredValue: [filteredInfo.name] || [],
                 onFilter: (value: any, record: any) => record.name.includes(value),
                 sorter: (a: any, b: any) => a.name.length - b.name.length,
                 sortOrder: sortedInfo.columnKey === 'name' && sortedInfo.order,
@@ -95,7 +95,7 @@ class SortTable extends React.Component<any, SortTableState> {
                     { text: 'London', value: 'London' },
                     { text: 'New York', value: 'New York' },
                 ],
-                filteredValue: filteredInfo.address || null,
+                filteredValue: [filteredInfo.address] || [],
                 onFilter: (value: any, record: any) => record.address.includes(value),
                 sorter: (a: any, b: any) => a.address.length - b.address.length,
                 sortOrder: sortedInfo.columnKey === 'address' && sortedInfo.order,
