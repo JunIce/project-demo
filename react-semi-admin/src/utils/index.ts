@@ -1,6 +1,3 @@
-/**
- * Created by hao.cheng on 2017/4/28.
- */
 import queryString from 'query-string';
 /**
  * 获取URL参数

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu } from 'antd';
+import { Nav } from '@douyinfe/semi-ui';
 import { Link } from 'react-router-dom';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { IFMenu } from '../routes/config';
@@ -8,19 +8,20 @@ import { MenuProps } from 'antd/lib/menu';
 const renderMenuItem = (
     item: IFMenu // item.route 菜单单独跳转的路由
 ) => (
-    <Menu.Item key={item.key}>
+    <Nav.Item itemKey={item.key} key={item.key}>
         <Link to={(item.route || item.key) + (item.query || '')}>
             {/* {item.icon && <Icon type={item.icon} />} */}
             <span className="nav-text">{item.title}</span>
         </Link>
-    </Menu.Item>
+    </Nav.Item>
 );
 
 const renderSubMenu = (item: IFMenu) => {
     return (
-        <Menu.SubMenu
+        <Nav.Sub
+            itemKey={item.key}
             key={item.key}
-            title={
+            text={
                 <span>
                     {/* {item.icon && <Icon type={item.icon} />} */}
                     <span className="nav-text">{item.title}</span>
@@ -28,7 +29,7 @@ const renderSubMenu = (item: IFMenu) => {
             }
         >
             {item.subs!.map((sub) => (sub.subs ? renderSubMenu(sub) : renderMenuItem(sub)))}
-        </Menu.SubMenu>
+        </Nav.Sub>
     );
 };
 
@@ -58,41 +59,43 @@ const SiderMenu = ({ menus, ...props }: SiderMenuProps) => {
         if (!result.destination) {
             return;
         }
-
         const _items = reorder(dragItems, result.source.index, result.destination.index);
         setDragItems(_items);
     };
     return (
-        <DragDropContext onDragEnd={onDragEnd}>
-            <Droppable droppableId="droppable">
-                {(provided, snapshot) => (
-                    <div ref={provided.innerRef} {...provided.droppableProps}>
-                        {dragItems.map((item: IFMenu, index: number) => (
-                            <Draggable key={item.key} draggableId={item.key} index={index}>
-                                {(provided, snapshot) => (
-                                    <div
-                                        ref={provided.innerRef}
-                                        {...provided.draggableProps}
-                                        {...provided.dragHandleProps}
-                                        onDragStart={(e: React.DragEvent<any>) =>
-                                            provided.dragHandleProps &&
-                                            provided.dragHandleProps.onDragStart(e as any)
-                                        }
-                                    >
-                                        <Menu {...props}>
+        <Nav
+            bodyStyle={{ height: '100vh' }}
+        >
+            <DragDropContext onDragEnd={onDragEnd}>
+                <Droppable droppableId="droppable">
+                    {(provided, snapshot) => (
+                        <div ref={provided.innerRef} {...provided.droppableProps}>
+                            {dragItems.map((item: IFMenu, index: number) => (
+                                <Draggable key={item.key} draggableId={item.key} index={index}>
+                                    {(provided, snapshot) => (
+                                        <div
+                                            ref={provided.innerRef}
+                                            {...provided.draggableProps}
+                                            {...provided.dragHandleProps}
+                                            onDragStart={(e: React.DragEvent<any>) =>
+                                                provided.dragHandleProps &&
+                                                provided.dragHandleProps.onDragStart(e as any)
+                                            }
+                                        >
+
                                             {item.subs!
                                                 ? renderSubMenu(item)
                                                 : renderMenuItem(item)}
-                                        </Menu>
-                                    </div>
-                                )}
-                            </Draggable>
-                        ))}
-                        {provided.placeholder}
-                    </div>
-                )}
-            </Droppable>
-        </DragDropContext>
+                                        </div>
+                                    )}
+                                </Draggable>
+                            ))}
+                            {provided.placeholder}
+                        </div>
+                    )}
+                </Droppable>
+            </DragDropContext>
+        </Nav>
     );
 };
 

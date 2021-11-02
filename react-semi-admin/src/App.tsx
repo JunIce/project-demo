@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Layout, notification } from 'antd';
+import { Layout, Notification } from '@douyinfe/semi-ui';
 import umbrella from 'umbrella-storage';
 import { useAlita } from 'redux-alita';
 import Routes from './routes';
@@ -38,9 +38,9 @@ function handleResize(handler: (isMobile: boolean) => void) {
 
 function openFNotification() {
     const openNotification = () => {
-        notification.open({
-            message: '博主-yezihaohao',
-            description: (
+        Notification.open({
+            title: '博主-yezihaohao',
+            content: (
                 <div>
                     <p>
                         GitHub地址：

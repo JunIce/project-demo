@@ -1,9 +1,5 @@
-/**
- * Created by 叶子 on 2017/7/30.
- * http通用工具函数
- */
 import axios from 'axios';
-import { message } from 'antd';
+import { Toast } from '@douyinfe/semi-ui';
 
 interface IFRequestParam {
     url: string;
@@ -23,7 +19,7 @@ export const get = ({ url, msg = '接口异常', config }: IFRequestParam) =>
         .then((res) => res.data)
         .catch((err) => {
             console.log(err);
-            message.warn(msg);
+            Toast.warn(msg);
         });
 
 /**
@@ -39,5 +35,5 @@ export const post = ({ url, data, msg = '接口异常', config }: IFRequestParam
         .then((res) => res.data)
         .catch((err) => {
             console.log(err);
-            message.warn(msg);
+            Toast.warn(msg);
         });

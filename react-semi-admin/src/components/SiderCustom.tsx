@@ -2,7 +2,7 @@
  * Created by hao.cheng on 2017/4/13.
  */
 import React, { useState, useEffect } from 'react';
-import { Layout } from 'antd';
+import { Layout } from '@douyinfe/semi-ui';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import routes from '../routes/config';
 import SiderMenu from './SiderMenu';
@@ -73,9 +73,7 @@ const SiderCustom = (props: SiderCustomProps) => {
 
     return (
         <Sider
-            trigger={null}
-            breakpoint="lg"
-            collapsed={collapsed}
+            breakpoint={["lg"]}
             style={{ overflowY: 'auto' }}
             className="sider-custom"
         >
