@@ -1,14 +1,6 @@
-/*
- * File: Sub2.tsx
- * Desc: 异步子菜单
- * File Created: 2020-01-21 11:31:15
- * Author: chenghao at <865470087@qq.com>
- * ------
- * Copyright 2020 - present, chenghao
- */
 import React from 'react';
 import BreadcrumbCustom from '../widget/BreadcrumbCustom';
-import { Row, Col, Card } from 'antd';
+import { Row, Col, Card } from '@douyinfe/semi-ui';
 
 const SmenuSub2 = () => {
     return (

@@ -1,8 +1,5 @@
-/**
- * Created by hao.cheng on 2017/5/6.
- */
 import React from 'react';
-import { Row, Col, Card } from 'antd';
+import { Row, Col, Card } from '@douyinfe/semi-ui';
 import BreadcrumbCustom from '../widget/BreadcrumbCustom';
 import PhotoSwipe from 'photoswipe';
 import PhotoswipeUIDefault from 'photoswipe/dist/photoswipe-ui-default';

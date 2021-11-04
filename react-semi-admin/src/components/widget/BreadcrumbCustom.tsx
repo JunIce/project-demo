@@ -1,10 +1,6 @@
-/**
- * Created by hao.cheng on 2017/4/22.
- */
 import React, { ReactNode } from 'react';
-import { Breadcrumb } from 'antd';
 import { Link } from 'react-router-dom';
-
+import { Breadcrumb } from '@douyinfe/semi-ui';
 interface BreadcrumbCustomProps {
     breads?: ReactNode[];
 }

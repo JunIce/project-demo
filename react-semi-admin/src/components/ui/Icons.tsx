@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import Emoji from './emoji';
-import { Row, Col, Card } from 'antd';
+import { Row, Col, Card } from '@douyinfe/semi-ui';
 import BreadcrumbCustom from '../widget/BreadcrumbCustom';
 
 const emojiList = () => {

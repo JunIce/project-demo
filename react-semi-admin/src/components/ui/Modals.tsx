@@ -2,7 +2,7 @@
  * Created by hao.cheng on 2017/4/23.
  */
 import React, { Component } from 'react';
-import { Row, Col, Card, Modal, Button } from 'antd';
+import { Row, Col, Card, Modal, Button } from '@douyinfe/semi-ui';
 import BreadcrumbCustom from '../widget/BreadcrumbCustom';
 const confirm = Modal.confirm;
 
@@ -22,13 +22,13 @@ class S extends Component {
             visible: true,
         });
     };
-    handleOk = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    handleOk = (e: any) => {
         console.log(e);
         this.setState({
             visible: false,
         });
     };
-    handleCancel = (e: React.MouseEvent<HTMLElement>) => {
+    handleCancel = (e: any) => {
         console.log(e);
         this.setState({
             visible: false,
@@ -227,8 +227,8 @@ class S extends Component {
                                         垂直居中
                                     </Button>
                                     <Modal
+                                        className="vertical-center-modal"
                                         title="Vertically centered modal dialog"
-                                        wrapClassName="vertical-center-modal"
                                         visible={this.state.modal2Visible}
                                         onOk={() => this.setModal2Visible(false)}
                                         onCancel={() => this.setModal2Visible(false)}

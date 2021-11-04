@@ -1,6 +1,6 @@
 import React from 'react';
 import Tencent from './Tencent';
-import { Row, Col, Card } from 'antd';
+import { Row, Col, Card } from '@douyinfe/semi-ui';
 import BreadcrumbCustom from '../../widget/BreadcrumbCustom';
 
 export default () => (
