@@ -2,7 +2,7 @@
  * Created by hao.cheng on 2017/5/8.
  */
 import React from 'react';
-import { Row, Col, Card, Table, Popconfirm, Button } from 'antd';
+import { Row, Col, Card, Table, Popconfirm, Button } from '@douyinfe/semi-ui';
 import BreadcrumbCustom from '../widget/BreadcrumbCustom';
 
 type ExampleAnimationsProps = {};
@@ -102,11 +102,6 @@ class ExampleAnimations extends React.Component<ExampleAnimationsProps, ExampleA
                                     bordered
                                     dataSource={dataSource}
                                     columns={columns}
-                                    rowClassName={(record: any, index: number) => {
-                                        if (this.state.deleteIndex === record.key)
-                                            return 'animated zoomOutLeft min-black';
-                                        return 'animated fadeInRight';
-                                    }}
                                 />
                             </Card>
                         </div>

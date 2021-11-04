@@ -1,8 +1,5 @@
-/**
- * Created by hao.cheng on 2017/5/3.
- */
 import React from 'react';
-import { Row, Col, Card, Timeline } from 'antd';
+import { Row, Col, Card, Timeline } from '@douyinfe/semi-ui';
 import BreadcrumbCustom from '../widget/BreadcrumbCustom';
 import EchartsViews from './EchartsViews';
 import EchartsProjects from './EchartsProjects';

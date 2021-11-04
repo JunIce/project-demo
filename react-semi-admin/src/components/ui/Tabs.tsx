@@ -2,17 +2,18 @@
  * Created by hao.cheng on 2017/4/25.
  */
 import React, { Component } from 'react';
-import { Row, Col, Card, Tabs, Radio, Button } from 'antd';
+import { Row, Col, Card, Tabs, Radio, Button, RadioGroup } from '@douyinfe/semi-ui';
 import BreadcrumbCustom from '../widget/BreadcrumbCustom';
-import { RadioChangeEvent } from 'antd/lib/radio';
-import { TabsPosition } from 'antd/lib/tabs';
+
 import { AndroidOutlined, AppleOutlined } from '@ant-design/icons';
+import { TabPosition, TabsProps } from '@douyinfe/semi-ui/lib/es/tabs';
+import { RadioChangeEvent } from '@douyinfe/semi-foundation/lib/es/radio/radioInnerFoundation';
 const TabPane = Tabs.TabPane;
 
 type TabsCustomState = {
     activeKey: string;
     panes: any;
-    mode: TabsPosition;
+    mode: TabPosition;
 };
 class TabsCustom extends Component<any, TabsCustomState> {
     constructor(props: any) {
@@ -145,14 +146,14 @@ class TabsCustom extends Component<any, TabsCustomState> {
                         </div>
                         <div className="gutter-box">
                             <Card title="带滚动" bordered={false}>
-                                <Radio.Group
+                                <RadioGroup
                                     onChange={this.handleModeChange}
                                     value={mode}
                                     style={{ marginBottom: 8 }}
                                 >
-                                    <Radio.Button value="top">Horizontal</Radio.Button>
-                                    <Radio.Button value="left">Vertical</Radio.Button>
-                                </Radio.Group>
+                                    <Radio value="top">Horizontal</Radio>
+                                    <Radio value="left">Vertical</Radio>
+                                </RadioGroup>
                                 <Tabs
                                     defaultActiveKey="1"
                                     tabPosition={mode}
@@ -194,10 +195,9 @@ class TabsCustom extends Component<any, TabsCustomState> {
                                     <Button onClick={this.add}>ADD</Button>
                                 </div>
                                 <Tabs
-                                    hideAdd
                                     onChange={this.onChange}
                                     activeKey={this.state.activeKey}
-                                    type="editable-card"
+                                    // type="editable-card"
                                     // onEdit={this.onEdit}
                                 >
                                     {this.state.panes.map((pane: any) => (

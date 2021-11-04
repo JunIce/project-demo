@@ -2,7 +2,7 @@
  * Created by hao.cheng on 2017/4/21.
  */
 import React from 'react';
-import { Row, Col, Card } from 'antd';
+import { Row, Col, Card } from '@douyinfe/semi-ui';
 import RechartsSimpleLineChart from './RechartsSimpleLineChart';
 import RechartsBarChart from './RechartsBarChart';
 import RechartsRadialBarChart from './RechartsRadialBarChart';

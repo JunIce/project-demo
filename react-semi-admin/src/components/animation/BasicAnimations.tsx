@@ -2,7 +2,7 @@
  * Created by hao.cheng on 2017/5/8.
  */
 import React from 'react';
-import { Row, Col, Card, Switch } from 'antd';
+import { Row, Col, Card, Switch } from '@douyinfe/semi-ui';
 import BreadcrumbCustom from '../widget/BreadcrumbCustom';
 
 class BasicAnimations extends React.Component {
@@ -118,8 +118,6 @@ class BasicAnimations extends React.Component {
                                             ? 'infinite'
                                             : ''
                                     } ${v}`}
-                                    onMouseEnter={() => this.animatedOne(i)}
-                                    onMouseLeave={() => this.animatedOneOver()}
                                 >
                                     <div className="pa-m text-center">
                                         <h3>{v}</h3>

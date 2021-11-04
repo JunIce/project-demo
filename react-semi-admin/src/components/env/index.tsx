@@ -1,14 +1,6 @@
-/*
- * File: index.tsx
- * Desc: 环境配置
- * File Created: 2020-08-02 23:00:28
- * Author: yezi
- * ------
- * Copyright 2020 - present, yezi
- */
 import React from 'react';
 import BreadcrumbCustom from '../widget/BreadcrumbCustom';
-import { Row, Col, Card, Descriptions } from 'antd';
+import { Row, Col, Card, Descriptions } from '@douyinfe/semi-ui';
 
 const getEnvs = () => Object.keys(process.env).filter((key) => /^REACT_ADMIN_/i.test(key));
 const Env = () => {
@@ -22,7 +14,7 @@ const Env = () => {
                     <Card title="环境变量配置" bordered={false}>
                         <Descriptions>
                             {envs.map((env) => (
-                                <Descriptions.Item key={env} label={env}>
+                                <Descriptions.Item itemKey={env}>
                                     {process.env[env]}
                                 </Descriptions.Item>
                             ))}

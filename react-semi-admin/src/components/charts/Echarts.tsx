@@ -2,7 +2,7 @@
  * Created by hao.cheng on 2017/4/17.
  */
 import React from 'react';
-import { Row, Col, Card } from 'antd';
+import { Row, Col, Card } from '@douyinfe/semi-ui';
 import EchartsArea from './EchartsArea';
 import EchartsPie from './EchartsPie';
 import EchartsEffectScatter from './EchartsEffectScatter';

@@ -5,7 +5,7 @@
  *
  */
 import React, { Component } from 'react';
-import { Col, Card, Row } from 'antd';
+import { Col, Card, Row } from '@douyinfe/semi-ui';
 import BreadcrumbCustom from '../widget/BreadcrumbCustom';
 import styles from './index.module.less';
 
