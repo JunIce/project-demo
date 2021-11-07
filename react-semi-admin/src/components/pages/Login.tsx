@@ -1,65 +1,60 @@
-import React, { useEffect } from 'react';
-import { Button, Form, Input } from '@douyinfe/semi-ui';
-import { PwaInstaller } from '../widget';
-import { useAlita } from 'redux-alita';
+import React, { useState } from 'react';
+import { Button, Form } from '@douyinfe/semi-ui';
+// import { PwaInstaller } from '../widget';
 import { RouteComponentProps } from 'react-router';
 import { FormProps } from 'antd/lib/form';
-import umbrella from 'umbrella-storage';
-import { useUpdateEffect } from 'ahooks';
 import { IconKey, IconUser } from '@douyinfe/semi-icons';
 
-type LoginProps = {
-    setAlitaState: (param: any) => void;
-    auth: any;
-} & RouteComponentProps &
-    FormProps;
+type LoginProps = RouteComponentProps & FormProps;
 
 const Login = (props: LoginProps) => {
     const { history } = props;
-    const [auth, setAlita] = useAlita({ auth: {} }, { light: true });
+    const [formLoading, setFormLoading] = useState(false);
 
-    useEffect(() => {
-        setAlita('auth', null);
-    }, [setAlita]);
+    const asyncValidateFields = (values: any) => {
+        setFormLoading(true);
 
-    useUpdateEffect(() => {
-        if (auth && auth.uid) {
-            // 判断是否登陆
-            umbrella.setLocalStorage('user', auth);
-            history.push('/');
-        }
-    }, [history, auth]);
+        return new Promise((resolve) => {
+            let errors: any = {};
 
-    const handleSubmit = (values: any) => {
-        if (checkUser(values)) {
-            setAlita({ funcName: values.userName, stateName: 'auth' });
-        }
-    };
-    const checkUser = (values: any) => {
-        const users = [
-            ['admin', 'admin'],
-            ['guest', 'guest'],
-        ];
-        return users.some((user) => user[0] === values.userName && user[1] === values.password);
-    };
+            if (values.userName !== 'admin') {
+                errors.userName = "用户名不正确"
+            }
+
+            if (values.password !== 'admin') {
+                errors.password = "密码不正确"
+            }
+
+            setTimeout(() => {
+                setFormLoading(false)
+                resolve(errors);
+            }, 2000)
+        });
+    }
 
     return (
         <div className="login">
             <div className="login-form">
                 <div className="login-logo">
-                    <span>React Admin</span>
-                    <PwaInstaller />
+                    <span>登录</span>
                 </div>
-                <Form onSubmit={(v) => {
-                    console.log(v)
-                }}>
+                <Form
+                    validateFields={asyncValidateFields}
+                    onSubmit={(v) => {
+                        console.log(v)
+                    }}>
                     <div>
-
                         <Form.Input
                             noLabel
                             field="userName"
                             prefix={<IconUser />}
                             placeholder="请输入用户名"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: "请输入用户名"
+                                }
+                            ]}
                         />
                     </div>
 
@@ -70,6 +65,12 @@ const Login = (props: LoginProps) => {
                             prefix={<IconKey />}
                             type="password"
                             placeholder="请输入密码"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: "请输入密码"
+                                }
+                            ]}
                         />
                     </div>
                     <div className="forgot-section">
@@ -85,6 +86,7 @@ const Login = (props: LoginProps) => {
                             htmlType='submit'
                             className="login-form-button"
                             style={{ width: '100%' }}
+                            loading={formLoading}
                         >登录</Button>
                     </div>
                 </Form>
