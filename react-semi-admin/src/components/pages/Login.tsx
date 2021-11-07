@@ -1,17 +1,13 @@
-/**
- * Created by hao.cheng on 2017/4/16.
- */
 import React, { useEffect } from 'react';
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input } from '@douyinfe/semi-ui';
 import { PwaInstaller } from '../widget';
 import { useAlita } from 'redux-alita';
 import { RouteComponentProps } from 'react-router';
 import { FormProps } from 'antd/lib/form';
 import umbrella from 'umbrella-storage';
-import { GithubOutlined, LockOutlined, UserOutlined } from '@ant-design/icons';
 import { useUpdateEffect } from 'ahooks';
+import { IconKey, IconUser } from '@douyinfe/semi-icons';
 
-const FormItem = Form.Item;
 type LoginProps = {
     setAlitaState: (param: any) => void;
     auth: any;
@@ -46,10 +42,6 @@ const Login = (props: LoginProps) => {
         ];
         return users.some((user) => user[0] === values.userName && user[1] === values.password);
     };
-    const gitHub = () => {
-        window.location.href =
-            'https://github.com/login/oauth/authorize?client_id=792cdcd244e98dcd2dee&redirect_uri=http://localhost:3006/&scope=user&state=reactAdmin';
-    };
 
     return (
         <div className="login">
@@ -58,43 +50,43 @@ const Login = (props: LoginProps) => {
                     <span>React Admin</span>
                     <PwaInstaller />
                 </div>
-                <Form onFinish={handleSubmit} style={{ maxWidth: '300px' }}>
-                    <FormItem
-                        name="userName"
-                        rules={[{ required: true, message: '请输入用户名!' }]}
-                    >
-                        <Input
-                            prefix={<UserOutlined size={13} />}
-                            placeholder="管理员输入admin, 游客输入guest"
+                <Form onSubmit={(v) => {
+                    console.log(v)
+                }}>
+                    <div>
+
+                        <Form.Input
+                            noLabel
+                            field="userName"
+                            prefix={<IconUser />}
+                            placeholder="请输入用户名"
                         />
-                    </FormItem>
-                    <FormItem name="password" rules={[{ required: true, message: '请输入密码!' }]}>
-                        <Input
-                            prefix={<LockOutlined size={13} />}
+                    </div>
+
+                    <div>
+                        <Form.Input
+                            noLabel
+                            field="password"
+                            prefix={<IconKey />}
                             type="password"
-                            placeholder="管理员输入admin, 游客输入guest"
+                            placeholder="请输入密码"
                         />
-                    </FormItem>
-                    <FormItem>
-                        <span className="login-form-forgot" style={{ float: 'right' }}>
+                    </div>
+                    <div className="forgot-section">
+                        <a className="login-form-forgot" style={{ float: 'right' }}>
                             忘记密码
-                        </span>
+                        </a>
+                    </div>
+                    <div className="submit-btn">
                         <Button
+                            size="large"
+                            theme='solid'
                             type="primary"
-                            htmlType="submit"
+                            htmlType='submit'
                             className="login-form-button"
                             style={{ width: '100%' }}
-                        >
-                            登录
-                        </Button>
-                        <p style={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <span>或 现在就去注册!</span>
-                            <span onClick={gitHub}>
-                                <GithubOutlined />
-                                (第三方登录)
-                            </span>
-                        </p>
-                    </FormItem>
+                        >登录</Button>
+                    </div>
                 </Form>
             </div>
         </div>
