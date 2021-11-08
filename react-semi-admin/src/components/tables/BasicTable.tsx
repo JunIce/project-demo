@@ -1,6 +1,3 @@
-/**
- * Created by hao.cheng on 2017/4/15.
- */
 import React from 'react';
 import { Table, Button } from '@douyinfe/semi-ui';
 import { DownOutlined } from '@ant-design/icons';
@@ -60,6 +57,19 @@ const data = [
     },
 ];
 
-const BasicTable = () => <Table columns={columns} dataSource={data} />;
+const handleCustomRow = (row: any, index: any) => {
+    // 给偶数行设置斑马纹
+    if (index % 2 === 0) {
+        return {
+            style: {
+                background: 'var(--semi-color-fill-0)',
+            }
+        };
+    } else {
+        return {};
+    }
+}
+
+const BasicTable = () => <Table columns={columns} dataSource={data} bordered onRow={handleCustomRow}/>;
 
 export default BasicTable;
