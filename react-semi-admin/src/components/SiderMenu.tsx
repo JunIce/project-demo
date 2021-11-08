@@ -8,11 +8,9 @@ import { MenuProps } from 'antd/lib/menu';
 const renderMenuItem = (
     item: IFMenu // item.route 菜单单独跳转的路由
 ) => (
-    <Nav.Item itemKey={item.key} key={item.key}>
-        <Link to={(item.route || item.key) + (item.query || '')}>
-            {/* {item.icon && <Icon type={item.icon} />} */}
-            <span className="nav-text">{item.title}</span>
-        </Link>
+    <Nav.Item itemKey={item.key} key={item.key} link={'#' + (item.route || item.key) + (item.query || '')}>
+        {/* {item.icon && <Icon type={item.icon} />} */}
+        <span className="nav-text">{item.title}</span>
     </Nav.Item>
 );
 
@@ -64,7 +62,9 @@ const SiderMenu = ({ menus, ...props }: SiderMenuProps) => {
     };
     return (
         <Nav
-            bodyStyle={{ height: '100vh' }}
+            header={
+                <div><h1>Header</h1></div>
+            }
         >
             <DragDropContext onDragEnd={onDragEnd}>
                 <Droppable droppableId="droppable">

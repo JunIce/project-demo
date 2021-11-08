@@ -77,7 +77,6 @@ const SiderCustom = (props: SiderCustomProps) => {
             style={{ overflowY: 'auto' }}
             className="sider-custom"
         >
-            <div className="logo" />
             <SiderMenu
                 menus={[...routes.menus, ...smenus]}
                 onClick={menuClick}
@@ -86,14 +85,6 @@ const SiderCustom = (props: SiderCustomProps) => {
                 openKeys={firstHide ? [] : menu.openKeys}
                 onOpenChange={openMenu}
             />
-            <style>
-                {`
-                    #nprogress .spinner{
-                        left: ${collapsed ? '70px' : '206px'};
-                        right: 0 !important;
-                    }
-                    `}
-            </style>
         </Sider>
     );
 };
